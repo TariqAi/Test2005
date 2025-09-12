@@ -1,0 +1,986 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 25%, #4c1d95 50%, #7c2d92 75%, #be185d 100%);
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Animated Background Effects */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.3) 0%, transparent 50%);
+    animation: backgroundPulse 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Floating Particles Animation */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(168, 85, 247, 0.4), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(79, 70, 229, 0.3), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(124, 58, 237, 0.3), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: floatingParticles 20s linear infinite;
+    pointer-events: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 95%;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    box-shadow: 
+        0 32px 64px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Animated gradient overlay for container */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(168, 85, 247, 0.1), 
+        transparent);
+    animation: shimmer 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.header {
+    background: linear-gradient(135deg, 
+        rgba(79, 70, 229, 0.9) 0%, 
+        rgba(124, 58, 237, 0.9) 50%, 
+        rgba(168, 85, 247, 0.9) 100%);
+    color: white;
+    padding: 24px 32px;
+    border-radius: 24px 24px 0 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Animated header background */
+.header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+        transparent 30%, 
+        rgba(255, 255, 255, 0.1) 50%, 
+        transparent 70%);
+    animation: headerWave 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+.header h1 i {
+    font-size: 32px;
+    background: linear-gradient(45deg, #fbbf24, #f59e0b, #fbbf24);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: iconSpin 3s ease-in-out infinite;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: statusFloat 3s ease-in-out infinite;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ef4444;
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+}
+
+.status-dot.online {
+    background: #10b981;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+    animation: pulse 2s infinite, onlineGlow 1.5s ease-in-out infinite alternate;
+}
+
+#status-text {
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow: hidden auto; /* hidden for x-axis, auto for y-axis */
+    padding: 32px;
+    background: rgba(255, 255, 255, 0.02);
+    position: relative;
+}
+
+/* Animated chat background */
+.chat-messages::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(168, 85, 247, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(79, 70, 229, 0.05) 0%, transparent 50%);
+    animation: chatBackgroundMove 10s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 24px;
+    animation: fadeIn 0.4s ease-out;
+    position: relative;
+    z-index: 1;
+}
+
+/* Logo styles for header */
+.header-logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    vertical-align: middle;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+/* Logo styles for message avatars */
+.avatar-logo {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Ensure message avatar container works with images */
+.message-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    font-size: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: avatarFloat 4s ease-in-out infinite;
+    flex-shrink: 0;
+    overflow: hidden; /* Ensures logo fits nicely */
+}
+
+/* Bot message avatar with logo */
+.bot-message .message-avatar {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a855f7 100%);
+    color: white;
+    padding: 4px; /* Add padding for logo */
+}
+
+/* User message avatar keeps the icon */
+.user-message .message-avatar {
+    background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%);
+    color: white;
+}
+
+.user-message {
+    flex-direction: row-reverse;
+}
+
+.user-message .message-avatar {
+    margin-right: 0;
+    margin-left: 16px;
+}
+
+.message-content {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 16px 20px;
+    border-radius: 16px;
+    max-width: 75%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Message content animation */
+.message-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent);
+    animation: messageShimmer 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* إضافة قواعد للنصوص المختلطة (عربي/إنجليزي) */
+.message-content p {
+    margin: 0;
+    line-height: 1.8; /* زيادة المسافة بين الأسطر */
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 15px;
+    position: relative;
+    z-index: 1;
+    word-wrap: break-word;
+    /* إضافة قواعد جديدة للنص المختلط */
+    direction: auto;
+    unicode-bidi: plaintext;
+    text-align: start;
+    white-space: pre-line; /* يحافظ على الأسطر الجديدة */
+    word-break: break-word;
+    overflow-wrap: break-word;
+    /* تحسين التباعد */
+    margin-bottom: 8px;
+    padding: 4px 0;
+}
+
+/* تحسين عرض النصوص الطويلة */
+.message-content {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px 24px; /* زيادة الحشو */
+    border-radius: 16px;
+    max-width: 75%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    /* تحسين التباعد الداخلي */
+    line-height: 1.6;
+}
+
+/* تنسيق خاص للفقرات المتعددة */
+.message-content p + p {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* تحسين عرض القوائم والنقاط */
+.message-content ul,
+.message-content ol {
+    margin: 8px 0;
+    padding-right: 20px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.message-content li {
+    margin: 6px 0;
+    line-height: 1.6;
+}
+
+/* تنسيق النصوص المقتبسة */
+.message-content blockquote {
+    margin: 12px 0;
+    padding: 12px 16px;
+    border-right: 3px solid rgba(168, 85, 247, 0.6);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    font-style: italic;
+}
+
+/* تحسين عرض الكود */
+.message-content code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.message-content pre {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 12px 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.message-content pre code {
+    background: none;
+    padding: 0;
+}
+
+.input-area {
+    padding: 24px 32px;
+    background: rgba(255, 255, 255, 0.03);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* Input area animation */
+.input-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(168, 85, 247, 0.5), 
+        transparent);
+    animation: inputBorderGlow 3s ease-in-out infinite;
+}
+
+.input-container {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Input container glow effect */
+.input-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        rgba(168, 85, 247, 0.3), 
+        rgba(79, 70, 229, 0.3), 
+        rgba(168, 85, 247, 0.3));
+    border-radius: 22px;
+    z-index: -1;
+    opacity: 0;
+    animation: inputFocusGlow 2s ease-in-out infinite;
+}
+
+#message-input {
+    flex: 1;
+    padding: 16px 20px;
+    background: transparent;
+    border: none;
+    border-radius: 16px;
+    resize: none;
+    font-family: inherit;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.9);
+    max-height: 120px;
+    line-height: 1.5;
+}
+
+#message-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+#message-input:focus {
+    outline: none;
+}
+
+.input-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary, #send-btn {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a855f7 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    animation: buttonPulse 2s ease-in-out infinite;
+}
+
+.btn-voice, #voice-btn {
+    background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+    animation: buttonPulse 2s ease-in-out infinite 0.5s;
+}
+
+.btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0) scale(1);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(168, 85, 247, 0.5);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(168, 85, 247, 0.7);
+}
+
+/* ========== ANIMATIONS ========== */
+
+@keyframes backgroundPulse {
+    0%, 100% { 
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes floatingParticles {
+    0% { 
+        transform: translateY(0px) rotate(0deg);
+    }
+    100% { 
+        transform: translateY(-100px) rotate(360deg);
+    }
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
+@keyframes headerWave {
+    0%, 100% { 
+        transform: rotate(0deg) scale(1);
+    }
+    50% { 
+        transform: rotate(180deg) scale(1.1);
+    }
+}
+
+@keyframes titleGlow {
+    0% { 
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    100% { 
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(168, 85, 247, 0.5);
+    }
+}
+
+@keyframes iconSpin {
+    0%, 100% { 
+        transform: rotate(0deg) scale(1);
+    }
+    50% { 
+        transform: rotate(10deg) scale(1.1);
+    }
+}
+
+@keyframes statusFloat {
+    0%, 100% { 
+        transform: translateY(0px);
+    }
+    50% { 
+        transform: translateY(-3px);
+    }
+}
+
+@keyframes onlineGlow {
+    0% { 
+        box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+    }
+    100% { 
+        box-shadow: 0 0 16px rgba(16, 185, 129, 0.8), 0 0 24px rgba(16, 185, 129, 0.3);
+    }
+}
+
+@keyframes chatBackgroundMove {
+    0%, 100% { 
+        transform: translateX(0px) translateY(0px);
+    }
+    25% { 
+        transform: translateX(10px) translateY(-10px);
+    }
+    50% { 
+        transform: translateX(-5px) translateY(10px);
+    }
+    75% { 
+        transform: translateX(-10px) translateY(-5px);
+    }
+}
+
+@keyframes avatarFloat {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% { 
+        transform: translateY(-2px) rotate(1deg);
+    }
+}
+
+@keyframes messageShimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes inputBorderGlow {
+    0%, 100% { 
+        opacity: 0.3;
+        transform: scaleX(0.5);
+    }
+    50% { 
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes inputFocusGlow {
+    0%, 100% { 
+        opacity: 0;
+    }
+    50% { 
+        opacity: 0.3;
+    }
+}
+
+@keyframes buttonPulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    }
+    50% { 
+        transform: scale(1.02);
+        box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+    }
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px) scale(0.95); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.6;
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        height: 95vh;
+        width: 98%;
+        border-radius: 16px;
+    }
+    
+    .header {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 24px;
+    }
+    
+    .chat-messages {
+        padding: 20px;
+    }
+    
+    .input-area {
+        padding: 20px;
+    }
+    
+    .message-content {
+        max-width: 85%;
+    }
+}
+
+.btn-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.btn-toggle.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-toggle.active:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    box-shadow: 0 0 25px rgba(102, 126, 234, 0.6);
+}
+
+.system-message {
+    opacity: 0.7;
+    font-style: italic;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite alternate;
+}
+
+.audio-indicator {
+    margin-top: 8px;
+    opacity: 0.7;
+    font-size: 0.9em;
+}
+
+.audio-icon {
+    color: #888;
+    transition: all 0.3s ease;
+}
+
+.audio-icon.playing {
+    animation: audioPlaying 1.5s ease-in-out infinite;
+}
+
+@keyframes audioPlaying {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% { 
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* Developer Footer */
+.developer-footer {
+    padding: 12px 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 10;
+}
+
+.developer-footer p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85em;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.developer-footer p:hover {
+    color: rgba(255, 255, 255, 0.9);
+    transition: color 0.3s ease;
+}
+
+/* Ensure container layout accommodates footer */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Global/base styles */
+.corner-logo {
+    position: fixed;
+    top: -35px;  /* moved further up (adjust as needed: e.g., -20px, -30px) */
+    left: 12px;
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    z-index: 1000;            /* Above header/content */
+    pointer-events: none;     /* Don’t block clicks */
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
+}
+
+/* Optional: adjust on very small screens */
+@media (max-width: 480px) {
+    .corner-logo {
+        width: 36px;
+        height: 36px;
+        top: 8px;
+        left: 8px;
+    }
+}
+
+.header {
+    padding: 20px;
+}
+
+.header h1 {
+    font-size: 24px;
+}
+
+.chat-messages {
+    padding: 20px;
+}
+
+.input-area {
+    padding: 20px;
+}
+
+.message-content {
+    max-width: 85%;
+}
+
+
+.btn-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.btn-toggle.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-toggle.active:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    box-shadow: 0 0 25px rgba(102, 126, 234, 0.6);
+}
+
+.system-message {
+    opacity: 0.7;
+    font-style: italic;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite alternate;
+}
+
+.audio-indicator {
+    margin-top: 8px;
+    opacity: 0.7;
+    font-size: 0.9em;
+}
+
+.audio-icon {
+    color: #888;
+    transition: all 0.3s ease;
+}
+
+.audio-icon.playing {
+    animation: audioPlaying 1.5s ease-in-out infinite;
+}
+
+@keyframes audioPlaying {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% { 
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* Developer Footer */
+.developer-footer {
+    padding: 12px 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 10;
+}
+
+.developer-footer p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85em;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.developer-footer p:hover {
+    color: rgba(255, 255, 255, 0.9);
+    transition: color 0.3s ease;
+}
+
+/* Ensure container layout accommodates footer */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}

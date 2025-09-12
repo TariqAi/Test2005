@@ -1,0 +1,59 @@
+# Core FastAPI and web server
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+streamlit>=1.28.0
+
+# Database and vector store
+chromadb>=0.4.15
+
+# AI and ML libraries
+openai>=1.3.0
+
+# Text-to-Speech
+elevenlabs>=0.2.20
+
+# LangChain ecosystem
+langchain>=0.0.300
+langchain-openai>=0.0.2
+langchain-community>=0.0.8
+
+# Audio processing
+pydub>=0.25.1
+webrtcvad>=2.0.10
+
+# HTTP and API clients
+requests>=2.31.0
+httpx>=0.25.0
+
+# Environment and configuration
+python-dotenv>=1.0.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# CORS and security
+python-multipart>=0.0.6
+
+# Utilities
+numpy>=1.24.0
+pandas>=2.1.0
+scipy>=1.11.0
+scikit-learn>=1.3.0
+
+# Text processing
+nltk>=3.8.0
+
+# Async support
+aiofiles>=23.2.0
+
+# Logging and monitoring
+loguru>=0.7.0
+
+# Development tools
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+black>=23.11.0
+flake8>=6.1.0
+
+# Additional dependencies
+typing-extensions>=4.8.0
+markdown>=3.5.0
