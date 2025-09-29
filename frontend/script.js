@@ -1,6 +1,6 @@
 class AgentXChat {
     constructor() {
-        this.apiUrl = 'http://localhost:8000';
+        this.apiUrl = 'https://agentx-ai-e4bm.onrender.com';
         this.isRecording = false;
         this.mediaRecorder = null;
         this.audioChunks = [];
